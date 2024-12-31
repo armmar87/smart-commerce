@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use \App\Enums\Driver\Vehicle;
 
 return new class extends Migration
 {
@@ -14,9 +15,9 @@ return new class extends Migration
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
             $table->enum('type', \App\Enums\Driver\Type::values())->nullable();
-            $table->enum('vehicle', \App\Enums\Driver\Vehicle::values())->nullable();
+            $table->enum('vehicle', Vehicle::values())->default(Vehicle::CAR);
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('courier_name');
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('license_plate')->nullable();
