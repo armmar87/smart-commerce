@@ -8,6 +8,7 @@ enum Role: string
 {
     use JsonSerializable;
 
+    case SUPER_ADMIN = 'super_admin';
     case ADMIN = 'admin';
     case COMPANY = 'company';
     case STORE = 'store';
