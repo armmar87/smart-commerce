@@ -12,4 +12,5 @@ enum Role: string
     case COMPANY = 'company';
     case STORE = 'store';
     case COURIER = 'courier';
+    case MANAGER = 'manager';
 }

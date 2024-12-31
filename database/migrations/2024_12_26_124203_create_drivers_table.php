@@ -14,7 +14,6 @@ return new class extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', \App\Enums\Driver\Type::values())->nullable();
             $table->enum('vehicle', Vehicle::values())->default(Vehicle::CAR);
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('name');
