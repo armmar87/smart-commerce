@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('deliveries', function (Blueprint $table) {
+        Schema::create('shipments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
             $table->foreignId('driver_id')->constrained('drivers')->onDelete('cascade');
             $table->enum('status', \App\Enums\Delivery\Status::values())->default('pending');
+            $table->string('pickup_address');
+            $table->string('delivery_address');
             $table->date('delivery_date')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
